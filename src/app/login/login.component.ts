@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  username = ''
+  username = 'vinodh'
   password = ''
   errorMessage = 'Invalid Credentials'
   invalidLogin  = false
@@ -23,12 +23,13 @@ export class LoginComponent implements OnInit {
 
 
   handleLogin() {
-    if (this.username === 'vinodh' && this.password === 'something')
-    this.invalidLogin = false;
+    if (this.username === 'vinodh' && this.password === 'something'){
+    this.invalidLogin = false
     //navigate to welcome component
+    this.router.navigate(['welcome', this.username])
+  }
     else {
       this.invalidLogin = true;
     }
   }
-
 }
