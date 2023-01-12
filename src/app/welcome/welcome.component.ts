@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent {
+  name = ''
+  constructor(private route :ActivatedRoute) {}
+
+  ngOnInit(){
+    console.log(this.route.snapshot.params['name']);
+    this.name = this.route.snapshot.params['name'];
+
+  }
 
 }
