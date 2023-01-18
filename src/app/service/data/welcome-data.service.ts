@@ -14,7 +14,10 @@ export class WelcomeDataService {
 
   executeWelcomeRestService(){
     console.log('welcome data service');
-    return this.httpClient.get<Welcome>('http://localhost:8080/welcome');
+    return this.httpClient.get<Welcome>(`http://localhost:8080/welcome`);
 
+  }
+  executeWelcomeRestServiceWithParameter(name :any) {
+    return this.httpClient.get<Welcome>(`http://localhost:8080/welcome/${name}`);
   }
 }

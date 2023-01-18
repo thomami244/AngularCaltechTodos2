@@ -39,6 +39,16 @@ export class WelcomeComponent {
       error => this.handleErrorResponse(error), // error message
     );
   }
+
+  getWelcomeMessageWithParameter(){
+    // console.log(this.welcomeDataService.executeWelcomeRestService()); //observable object
+    this.welcomeDataService.executeWelcomeRestServiceWithParameter(this.name).subscribe(
+      response => this.handleSuccesfulResponse(response),
+      error => this.handleErrorResponse(error), // error message
+    );
+  }
+
+
   handleSuccesfulResponse(response :any){
     // console.log(response);
     // console.log(response.message)
@@ -48,6 +58,8 @@ export class WelcomeComponent {
   handleErrorResponse(error :any){
     // console.log(response);
     // console.log(response.message)
-    this.welcomeMessageFromService = error.error.message;
+    // console.log("this is my message")
+    // console.log(error.error.errorMessage)
+    this.welcomeMessageFromService = `error message from Spring Boot get request ${error.error.errorMessage}`;
   }
 }
