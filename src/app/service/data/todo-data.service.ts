@@ -6,11 +6,13 @@ import { Todo } from 'src/app/list-todos/list-todos.component';
   providedIn: 'root'
 })
 export class TodoDataService {
-
   constructor(private httpClient: HttpClient) { }
 
   retrieveAllTodos(username :any){
-
     return this.httpClient.get<Todo[]>(`http://localhost:8080/users/${username}/todos`)
+  }
+
+ retrieveTodo(username :any, id :number){
+    return this.httpClient.get<Todo[]>(`http://localhost:8080/users/${username}/todos/${id}`)
   }
 }
