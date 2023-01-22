@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from '../service/data/todo-data.service';
+
 
 export class Todo {
 
@@ -15,22 +16,22 @@ export class Todo {
 })
 
 export class ListTodosComponent implements OnInit{
-  constructor(private todoDataService: TodoDataService) { }
+    constructor(private todoDataService: TodoDataService) { }
 
-  ngOnInit() {
-    this.refreshTodos()
+    ngOnInit() {
+      this.refreshTodos()
+    }
+
+    todos4: Todo[] = [];
+
+  refreshTodos(){
+    this.todoDataService.retrieveAllTodos('vinodh').subscribe(
+      response => {
+        // console.log(response);
+        this.todos4 = response;
+      }
+    )
   }
-
-   todos:Todo[]
-
-refreshTodos(){
-this.todoDataService.retrieveAllTodos('vinodh').subscribe(
-  response => {
-    console.log(response);
-  }
-)
-
-}
 }
 
 
