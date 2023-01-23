@@ -10,19 +10,14 @@ import { TodoDataService } from '../service/data/todo-data.service';
 })
 export class TodoComponent implements OnInit{
   id!: number
-  todo: Todo[] =[];
+  todo: Todo[] = [];
 
   constructor(private todoDataService:TodoDataService, private activatedRoute: ActivatedRoute ) { }
   ngOnInit() {
-    this.id = this.activatedRoute.snapshot.params['id'];
-    this.todoDataService.retrieveTodo('vinodh', this.id).subscribe(
-
-
-      data => this.todo = data
-
-
+    this.id = this.activatedRoute.snapshot.params[`id`];
+    this.todoDataService.retrieveTodo(`vinodh`, this.id).subscribe(
+       data => this.todo = data
       // data => console.log(data)
-
     )
   }
 }
