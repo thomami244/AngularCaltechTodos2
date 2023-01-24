@@ -4,10 +4,8 @@ import { TodoDataService } from '../service/data/todo-data.service';
 
 
 export class Todo {
-
   constructor (public id : number, public description : string, public done: boolean, public targetDate: Date) {
   }
-
 }
 
 @Component({
@@ -22,7 +20,7 @@ export class ListTodosComponent implements OnInit{
     ngOnInit() {
       this.refreshTodos()
     }
-
+    todo5: Todo = new Todo(1,``, false, new Date)
 
 
     todos4: Todo[] = [];

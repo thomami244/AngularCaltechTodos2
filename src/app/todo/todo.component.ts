@@ -10,13 +10,23 @@ import { TodoDataService } from '../service/data/todo-data.service';
 })
 export class TodoComponent implements OnInit{
   id!: number
-  todo: Todo[] = [];
+  todo5!: Todo;
+  // todo5: Todo = new Todo(1,'Learn to Dance', false, new Date() )
+  // todo: Todo = Todo(1, '', false, new Date())
+  // todo: Todo = new Todo(1,'Learn to Dance', false, new Date() )
+
+
+  // todo5: Todo = new Todo(1,'Learn to Dance', false, new Date() )
+
+  // todo: Todo = Todo(1, '', false, new Date())
+  // todo: Todo = new Todo(1,'Learn to Dance', false, new Date() )
 
   constructor(private todoDataService:TodoDataService, private activatedRoute: ActivatedRoute ) { }
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params[`id`];
+    this.todo5 = new Todo(1, '', false, new Date());
     this.todoDataService.retrieveTodo(`vinodh`, this.id).subscribe(
-       data => this.todo = data
+       data => this.todo5 = data
       // data => console.log(data)
     )
   }

@@ -5,12 +5,16 @@ console.log("this is ${todo}")
 <div class = 'container'>
   <fieldset class="form-group">
     <label>Description</label>
-    <input type="text" [(ngModel)]="todo.description" class="form-control" name="description" required="required">
+    <input type="text" #description="ngModel" [(ngModel)]="todo5.description" class="form-control" name="description" required="required">
   </fieldset>
 
   <fieldset class="form-group">
     <label>Target Date</label>
-    <input type="text" [(ngModel)]="todo.targetDate" class="form-control" name="targetDate" required="required">
+    <input type="date" #targetDate="ngModel"
+    [ngModel]="todo5.targetDate | date: `yyyy-MM-dd`"
+    <!-- [(ngModel)]="todo5.targetDate" -->
+    (ngModelChange) ="todo5.targetDate = $event"
+    class="form-control" name="targetDate" required="required">
   </fieldset>
 
   <button class="btn btn-success" (click)="saveTodo()">Save</button>
